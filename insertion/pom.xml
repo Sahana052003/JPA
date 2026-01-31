@@ -6,6 +6,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>update</module>
+    <module>read</module>
   </modules>
   <version>1.0-SNAPSHOT</version>
   <name>insertion Maven Webapp</name>
