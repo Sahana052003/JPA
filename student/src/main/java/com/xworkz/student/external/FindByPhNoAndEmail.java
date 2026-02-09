@@ -1,9 +1,6 @@
 package com.xworkz.student.external;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class FindByPhNoAndEmail {
     public static void main(String[] args) {
@@ -12,5 +9,14 @@ public class FindByPhNoAndEmail {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
+
+        Query findByphNoandEmail = entityManager.createNamedQuery("findByphNoandEmail");
+        findByphNoandEmail.setParameter("mobileNumber",9562819462L);
+        findByphNoandEmail.setParameter("emailby","nandu@gmail.com");
+        Object singleResult = findByphNoandEmail.getSingleResult();
+        System.out.println(singleResult);
+        transaction.commit();
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }

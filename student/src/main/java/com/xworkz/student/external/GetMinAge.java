@@ -1,9 +1,6 @@
 package com.xworkz.student.external;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class GetMinAge {
     public static void main(String[] args) {
@@ -11,5 +8,12 @@ public class GetMinAge {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
+
+        Query getMinAge = entityManager.createNamedQuery("getMinAge");
+        Object singleResult = getMinAge.getSingleResult();
+        System.out.println(singleResult);
+        transaction.commit();
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }

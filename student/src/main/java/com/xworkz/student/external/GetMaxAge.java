@@ -1,9 +1,6 @@
 package com.xworkz.student.external;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class GetMaxAge {
     public static void main(String[] args) {
@@ -11,5 +8,14 @@ public class GetMaxAge {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
+
+
+        Query getMaxAge = entityManager.createNamedQuery("getMaxAge");
+        Object singleResult = getMaxAge.getSingleResult();
+        //Integer in=(Integer) getMaxAge.getSingleResult();
+        System.out.println(singleResult);
+        transaction.commit();
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }
