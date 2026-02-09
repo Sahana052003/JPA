@@ -24,6 +24,9 @@ import javax.persistence.Table;
 query = "select nq from StudentEntity nq where nq.phoneNumber= :phoneNumberby")
 
 
+@NamedQuery(name="FindByEmaill"
+        ,query = "select s from StudentEntity s where s.email=:emailby ")
+
 
 public class StudentEntity {
     @Id
