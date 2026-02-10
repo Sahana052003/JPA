@@ -34,6 +34,12 @@ query = "select nq from StudentEntity nq where nq.phoneNumber= :phoneNumberby")
 @NamedQuery(name = "findByAgeGreater",
         query = "select nq from StudentEntity nq WHERE nq.age > 18")
 
+
+@NamedQuery(name = "findByAgelessthan",
+        query = "select nq from StudentEntity nq WHERE nq.age < 18")
+
+
+
 @NamedQuery(name = "getCount",
         query ="select count(nq) from StudentEntity nq")
 
