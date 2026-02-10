@@ -13,6 +13,9 @@ public class FindByAgeGreater {
         Query findByAgeGreater = entityManager.createNamedQuery("findByAgeGreater");
         List resultList = findByAgeGreater.getResultList();
         resultList.forEach(age-> System.out.println(age));
+
+
+
         transaction.commit();
         entityManager.close();
         entityManagerFactory.close();
