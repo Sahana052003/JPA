@@ -15,6 +15,7 @@ public class FindByName {
 
 
 
+
         Query query = entityManager.createNamedQuery("findByName");
         query.setParameter("nameby", "kavya");
         StudentEntity student=(StudentEntity)query.getSingleResult();
