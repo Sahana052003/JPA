@@ -29,11 +29,11 @@ public class Twitter {
 
         List<TwitterEntity> list=new ArrayList<>();
 
-//        Query query = entityManager.createNamedQuery("read");
-//        query.setParameter("name","Bindhu");
-//        List<TwitterEntity> resultList = (List<TwitterEntity>) query.getResultList();
-//        System.out.println("query----");
-//        System.out.println(resultList);
+        Query query = entityManager.createNamedQuery("read");
+        query.setParameter("name","Bindhu");
+        List<TwitterEntity> resultList = (List<TwitterEntity>) query.getResultList();
+        System.out.println("query----");
+        System.out.println(resultList);
 
         Query quer1 = entityManager.createNamedQuery("readALL");
         quer1.setParameter("username","Muktha");
@@ -41,10 +41,10 @@ public class Twitter {
         System.out.println("quer1===");
         System.out.println(resultList1);
 
-//        Query twitter = entityManager.createNamedQuery("twitter");
-//        List resultList2 = twitter.getResultList();
-//        System.out.println(resultList2);
-//        System.out.println("twitter--");
+        Query twitter = entityManager.createNamedQuery("twitter");
+        List resultList2 = twitter.getResultList();
+        System.out.println(resultList2);
+        System.out.println("twitter--");
 
         Query data = entityManager.createNamedQuery("data");
         data.setParameter("mobile_number",7823198473L);
@@ -73,16 +73,16 @@ public class Twitter {
         Query contact = entityManager.createNamedQuery("contact");
         contact.setParameter("email","nandu3@gmail.com");
         contact.setParameter("phoneNumber",8923561848L);
-        List resultList = contact.getResultList();
-        System.out.println(resultList);
+        List resultList6 = contact.getResultList();
+        System.out.println(resultList6);
 
 
         System.out.println("Named Native Query=====OR=====");
         Query check = entityManager.createNamedQuery("check");
         check.setParameter("user","Nandushree");
         check.setParameter("email_id","nandu3@gmail.com");
-        List resultList2 = chat.getResultList();
-        System.out.println(resultList2);
+        List resultList5 = chat.getResultList();
+        System.out.println(resultList5);
 
 
         transaction.commit();
