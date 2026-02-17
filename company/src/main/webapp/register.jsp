@@ -1,3 +1,7 @@
+
+<%@ page isELIgnored="false" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +10,7 @@
     <title>Register Form</title>
 </head>
 <body>
-    <h1>Login Success</h1>
+    <h1>${dto}</h1>
+
 </body>
 </html>

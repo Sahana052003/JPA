@@ -17,6 +17,6 @@ public class WebConfiguration {
     @Bean
     public ViewResolver viewResolver(){
         System.out.println("viewResolver is Called");
-        return new InternalResourceViewResolver("",".jsp");
+        return new InternalResourceViewResolver("/",".jsp");
     }
 }
