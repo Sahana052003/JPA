@@ -6,6 +6,7 @@ import com.xworkz.company.entity.CompanyEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,25 +20,21 @@ public class CompanyServiceIml implements CompanyService {
     @Override
     public boolean register(CompanyDTO companyDTO) {
 
-        if (companyDTO != null
-                && companyDTO.getFirstName() != null
-                && companyDTO.getFirstName().length() >= 4
+        String firstName = companyDTO.getFirstName();
+        String lastName = companyDTO.getLastName();
+        String email = companyDTO.getEmail();
+        String password = companyDTO.getPassword();
+        String companyName = companyDTO.getCompanyName();
+        Long mobile = companyDTO.getMobileNumber();
 
-                && companyDTO.getLastName() != null
-                && companyDTO.getLastName().length() >= 1
-
-                && companyDTO.getEmail() != null
-                && companyDTO.getEmail().length() >= 15
-                && companyDTO.getEmail().contains("@gmail.com")
-
-                && companyDTO.getPassword() != null
-                && companyDTO.getPassword().length() >= 5
-
-                && companyDTO.getCompanyName() != null
-                && companyDTO.getCompanyName().length() > 0
-
-                && companyDTO.getMobileNumber() != null
-                && String.valueOf(companyDTO.getMobileNumber()).length() == 10
+        String pwd = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{6,}$";
+        String phoneNumber = "^[6-9][0-9]{9}$";
+        if (firstName != null && firstName.length() >= 4 &&
+                lastName != null && lastName.length() >= 1 &&
+                email != null && email.endsWith("@gmail.com") &&
+                password != null && password.matches(pwd) &&
+                companyName != null && !companyName.trim().isEmpty() &&
+                mobile != null && String.valueOf(mobile).matches(phoneNumber)
         ) {
 
             CompanyEntity entity = new CompanyEntity();
@@ -58,8 +55,31 @@ public class CompanyServiceIml implements CompanyService {
     }
 
     @Override
-    public List<CompanyEntity> getDtos() {
+    public List<CompanyDTO> getDtos() {
         List<CompanyEntity> companyData = companyDAO.getCompanyData();
-        return Collections.emptyList();
+
+
+
+
+        if (!companyData.isEmpty()) {
+
+            List<CompanyDTO> companyDTOList = new ArrayList<>();
+          companyData.forEach(entities->
+            {
+                CompanyDTO companyDTO = new CompanyDTO();
+
+                companyDTO.setFirstName(entities.getFirstName());
+                companyDTO.setLastName(entities.getLastName());
+                companyDTO.setEmail(entities.getEmail());
+                companyDTO.setPassword(entities.getPassword());
+                companyDTO.setCompanyName(entities.getCompanyName());
+                companyDTO.setMobileNumber(entities.getMobileNumber());
+
+                companyDTOList.add(companyDTO);
+            });
+            return companyDTOList;
+        } else {
+            return Collections.emptyList();
+        }
     }
 }

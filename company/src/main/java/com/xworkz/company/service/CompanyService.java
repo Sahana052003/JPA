@@ -9,5 +9,5 @@ public interface CompanyService {
     boolean register(CompanyDTO companyDTO);
 
 
-    List<CompanyEntity> getDtos();
+    List<CompanyDTO> getDtos();
 }

@@ -47,26 +47,46 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
+
+        <!-- Logo -->
         <a class="navbar-brand fw-bold text-primary" href="#">SignUp</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
+
+        <!-- Navbar Content -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#">What We Do</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Create a SignUp</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Find My SignUp</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-                <li class="nav-item"><a class="nav-link" href="login">Log In</a></li>
-                <li class="nav-item"><a class="nav-link fw-bold" href="register">Register</a></li>
+
+            <!-- menu itmes -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">What We Do</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Create a SignUp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Find My SignUp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                </li>
             </ul>
+
+            <!--Login Links-->
+            <ul class="navbar-nav">
+
+                <!-- Log In Link -->
+                <ul class="navbar-nav">
+                      <li class="nav-item">
+                           <a class="nav-link text-dark" href="login">Log In</a>
+                      </li>
+                <!-- Register Link -->
+                      <li class="nav-item">
+                         <a class="nav-link text-dark" href="register">Register</a>
+                      </li>
+                </ul>
         </div>
     </div>
 </nav>
-
-
-
 </body>
 </html>

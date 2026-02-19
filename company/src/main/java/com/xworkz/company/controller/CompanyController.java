@@ -2,6 +2,7 @@ package com.xworkz.company.controller;
 
 
 import com.xworkz.company.dto.CompanyDTO;
+import com.xworkz.company.entity.CompanyEntity;
 import com.xworkz.company.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -54,8 +58,9 @@ public class CompanyController {
 
 
     @GetMapping("data")
-    public String getDetails(CompanyDTO companyDTO){
-        companyService.getDtos();
+    public String getDetails(Model model){
+        List<CompanyDTO> dtos = companyService.getDtos();
+        model.addAttribute("hello",dtos);
         return "information";
     }
     }
