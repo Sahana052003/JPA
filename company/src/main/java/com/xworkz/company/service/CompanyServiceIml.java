@@ -68,6 +68,7 @@ public class CompanyServiceIml implements CompanyService {
 
                 companyDTOList.add(companyDTO);
             });
+
             return companyDTOList;
         } else {
             return Collections.emptyList();
