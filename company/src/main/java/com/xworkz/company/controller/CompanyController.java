@@ -57,6 +57,7 @@ public class CompanyController {
 
 
 
+
     @GetMapping("data")
     public String getDetails(Model model){
         List<CompanyDTO> dtos = companyService.getDtos();

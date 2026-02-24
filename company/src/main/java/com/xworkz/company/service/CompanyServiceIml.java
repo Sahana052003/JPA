@@ -3,6 +3,7 @@ package com.xworkz.company.service;
 import com.xworkz.company.dao.CompanyDAO;
 import com.xworkz.company.dto.CompanyDTO;
 import com.xworkz.company.entity.CompanyEntity;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +39,7 @@ public class CompanyServiceIml implements CompanyService {
         ) {
 
             CompanyEntity entity = new CompanyEntity();
-            entity.setFirstName(companyDTO.getFirstName());
-            entity.setLastName(companyDTO.getLastName());
-            entity.setEmail(companyDTO.getEmail());
-            entity.setPassword(companyDTO.getPassword());
-            entity.setCompanyName(companyDTO.getCompanyName());
-            entity.setMobileNumber(companyDTO.getMobileNumber());
+            BeanUtils.copyProperties(companyDTO,entity);
 
             companyDAO.saveData(entity);
             return true;
@@ -68,12 +64,7 @@ public class CompanyServiceIml implements CompanyService {
             {
                 CompanyDTO companyDTO = new CompanyDTO();
 
-                companyDTO.setFirstName(entities.getFirstName());
-                companyDTO.setLastName(entities.getLastName());
-                companyDTO.setEmail(entities.getEmail());
-                companyDTO.setPassword(entities.getPassword());
-                companyDTO.setCompanyName(entities.getCompanyName());
-                companyDTO.setMobileNumber(entities.getMobileNumber());
+                BeanUtils.copyProperties(entities,companyDTO);
 
                 companyDTOList.add(companyDTO);
             });

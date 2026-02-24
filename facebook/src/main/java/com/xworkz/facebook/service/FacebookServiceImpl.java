@@ -5,7 +5,6 @@ import com.xworkz.facebook.dto.FacebookDTO;
 import com.xworkz.facebook.entity.FacebookEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -51,7 +50,6 @@ public class FacebookServiceImpl implements FacebookService {
 
         if (!facebookData.isEmpty()) {
             List<FacebookDTO> facebookDTOList = new ArrayList<>();
-
 
             facebookData.forEach(entity -> {
                 FacebookDTO dto = new FacebookDTO();

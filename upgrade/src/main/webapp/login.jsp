@@ -1,11 +1,14 @@
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Free Account</title>
+    <title>Dashboard Login</title>
 
-    <!-- Bootstrap 5-->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -13,28 +16,18 @@
             background-color: #f4f6f8;
         }
 
-        /* Navbar Styling */
-        .navbar-brand {
-            font-size: 22px;
-        }
-
-        /* Register Box */
-        .register-box {
-            max-width: 700px;
-            margin: 60px auto;
+        .login-box {
+            max-width: 420px;
+            margin: 80px auto;
             background: white;
-            padding: 40px;
+            padding: 35px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .title-bar {
-            background-color: #2e8cb8;
-            color: white;
-            padding: 12px;
-            text-align: center;
+        .login-title {
             font-weight: 600;
-            border-radius: 4px;
+            text-align: center;
             margin-bottom: 25px;
         }
     </style>
@@ -42,83 +35,103 @@
 
 <body>
 
-<!-- Nav Bar Section-->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-
-        <!-- For Logo -->
         <a class="navbar-brand fw-bold text-primary" href="/">SignUp</a>
 
-        <!-- Menu Items -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-            <!-- Left Menu -->
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">What We Do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Create a SignUp</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Find My SignUp</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Idea Center</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Help</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="#">What We Do</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Create a SignUp</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Find My SignUp</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
             </ul>
 
-            <!-- Right side of Log In and Register Link -->
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="login">Log in</a>
+                <li class="nav-item me-3">
+                    <form action="login" method="get">
+                        <button type="submit" class="btn btn-link nav-link text-dark p-0">Log In</button>
+                    </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <form action="register" method="post">
+                        <button type="submit" class="btn btn-link nav-link text-dark p-0">Register</button>
+                    </form>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
 
-
-<!-- Form Data  -->
+<!-- Login Box -->
 <div class="container">
-    <div class="register-box">
+    <div class="login-box">
 
+        <h4 class="login-title">Dashboard Login</h4>
+
+        <!-- Error Message -->
+        <c:if test="${not empty loginError}">
+            <div id ="loginErrorBox" class="alert alert-danger text-center">
+                ${loginError}
+            </div>
+        </c:if>
 
         <form action="loginData" method="post">
 
+            <!-- Email -->
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" name="email"
-                       class="form-control"
-                       placeholder="you@example.com"
-                       required>
+                <input type="text"
+                       name="email"
+
+                       class="form-control ${not empty loginError ? 'is-invalid' : ''}"
+                       placeholder="you@gmail.com">
+
+
             </div>
 
+            <!-- Password -->
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" name="password"
-                       class="form-control"
-                       required>
+                <input type="password"
+                       name="password"
+                       class="form-control ${not empty loginError ? 'is-invalid' : ''}">
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-success">
-                    Continue
-                </button>
+                <button type="submit" class="btn btn-success">Log In</button>
             </div>
+
         </form>
+
     </div>
 </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", function () {
 
+    const errorBox = document.getElementById("loginErrorBox");
+
+    if (errorBox) {
+
+        setTimeout(function () {
+
+            errorBox.style.transition = "opacity 0.5s ease";
+            errorBox.style.opacity = "0";
+
+            document.querySelectorAll(".is-invalid").forEach(function(input){
+                input.classList.remove("is-invalid");
+            });
+
+            setTimeout(function () {
+                errorBox.remove();
+            }, 1000);
+
+        }, 1000);
+    }
+
+});
+</script>
 </body>
 </html>

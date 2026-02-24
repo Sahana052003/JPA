@@ -48,6 +48,8 @@ public class CompanyDAOImpl implements CompanyDAO {
         } finally {
             entityManager.close();
             entityManager.close();
+
+
         }
     }
 }
